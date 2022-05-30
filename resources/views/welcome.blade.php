@@ -21,6 +21,9 @@
         </style>
     </head>
     <body class="antialiased">
+        <center>
+
 <h1  class="w3-bottom-3 w3-center"> Klaboo Network</h1>
+        </center>
     </body>
 </html>
