@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Klaboo</title>
+<title>Klabo</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -36,7 +36,7 @@ body, html {
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card" id="myNavbar">
-    <a href="#home" class="w3-bar-item w3-button w3-wide">Klaboo Logo</a>
+    <a href="#home" class="w3-bar-item w3-button w3-wide">Klabo Logo</a>
 
     <button class="w3-bar-item w3-button w3-hide-small w3-left" onclick="toggleFunction()">
  For talents</button>
@@ -63,11 +63,16 @@ body, html {
 <!-- Sidebar on small screens when clicking the menu icon -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
-  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
-  <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
-  <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
-  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+  <button class="w3-bar-item w3-button w3-hide-small w3-left" onclick="toggleFunction()">
+ For talents</button>
+ <button class="w3-bar-item w3-button w3-hide-small w3-left" onclick="toggleFunction()">
+ For clients</button>
+  <a href="#about" class="w3-bar-item w3-button">How it Works</a>
+      <a href="#team" class="w3-bar-item w3-button"> </a>
+      <a href="#work" class="w3-bar-item w3-button"> For Agency</a>
+      <button class="w3-bar-item w3-button w3-hide-small w3-left" onclick="toggleFunction()">
+ Get Started</button>
+      <a href="#contact" class="w3-bar-item w3-button"> Log in</a>
 </nav>
 
 <!-- Header with full-height image -->
