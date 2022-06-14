@@ -51,6 +51,10 @@ a {
 .w3-bar .w3-button {
   padding: 16px;
 }
+
+.default_color {
+    color: #f2780a;
+}
 </style>
 </head>
 <body>
@@ -134,13 +138,13 @@ a {
 
 </header>
 <!-- About Section -->
-<div class="w3-container" style="padding:128px 16px" id="about">
+<div class="w3-container" style="" id="about">
 
-  <h3 class="w3-left">Reimagine freelancing</h3>
+  <h3 class="w3-left">Reimagine</h3> <h3 class="default_color">freelancing</h3>
 
   <div class="w3-row-padding w3-center" style="margin-top:64px">
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_qx8ajuag.json" background="transparent"  speed="1"  style="width: 1000px; height: 1000px;" loop controls autoplay></lottie-player>
+<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_qx8ajuag.json" background="transparent"  speed="1"  style="width: 1000px; height: 1000px;" loop autoplay></lottie-player>
   </div>
 </div>
 
@@ -167,7 +171,7 @@ a {
 
 <div class="w3-center w3-paddin-64">
     <h3>Achieve more with Klabo today</h3>
-    <p><button type="button" class="w3-button">Sign Up</button></p>
+    <p><button type="button" class="ntn btn-primary">Sign Up</button></p>
 
     </div>
 
