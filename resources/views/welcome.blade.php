@@ -48,9 +48,8 @@ body, html {
       <a href="#about" class="w3-bar-item w3-button">How it Works</a>
       <a href="#team" class="w3-bar-item w3-button"> </a>
       <a href="#work" class="w3-bar-item w3-button"> For Agency</a>
-      <button class="w3-bar-item w3-button w3-hide-small w3-left" onclick="toggleFunction()">
- Get Started</button>
-      <a href="#contact" class="w3-bar-item w3-button"> Log in</a>
+      <a href="/register" class="w3-bar-item w3-button"> Get Started</a>
+      <a href="/login" class="w3-bar-item w3-button"> Log in</a>
     </div>
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
@@ -70,9 +69,8 @@ body, html {
   <a href="#about" class="w3-bar-item w3-button">How it Works</a>
       <a href="#team" class="w3-bar-item w3-button"> </a>
       <a href="#work" class="w3-bar-item w3-button"> For Agency</a>
-      <button class="w3-bar-item w3-button w3-hide-small w3-left" onclick="toggleFunction()">
- Get Started</button>
-      <a href="#contact" class="w3-bar-item w3-button"> Log in</a>
+      <a href="/register" class="w3-bar-item w3-button"> Get Started</a>
+      <a href="/login" class="w3-bar-item w3-button"> Log in</a>
 </nav>
 
 <!-- Header with full-height image -->
