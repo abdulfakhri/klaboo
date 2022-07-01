@@ -81,7 +81,16 @@ function openNav() {
       <a href="#" class="w3-bar-item w3-button">Personal & Settings</a>
       <a href="#" class="w3-bar-item w3-button">Email Preferences</a>
       <a href="#" class="w3-bar-item w3-button">Help</a>
-      <a href="{{ route('logout') }}" class="w3-bar-item w3-button">Log Out</a>
+    
+      <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
     </div>
   </div>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white  w3-right" title="Messages"><i class="material-icons">message</i></a>
