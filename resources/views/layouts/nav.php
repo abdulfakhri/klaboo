@@ -10,9 +10,34 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 </style>
+<script>
+// Accordion
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme-d1";
+  } else {
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className =
+    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+  }
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
 </head>
 <body class="w3-theme-l5">
 
@@ -20,7 +45,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 <div class="w3-top">
  <div class="w3-bar w3-theme w3-left-align w3-large">
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4 w3-left"><i class="fa fa-home w3-margin-right"></i>Klabo Logo</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4 w3-left"><i class="fa fa-home w3-margin-right"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white  w3-left" title="Account Settings">Teams</a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white  w3-left" title="Account Settings">Project</a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white  w3-left" title="Account Settings">Reports</a>
@@ -30,7 +55,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
 
 
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white  w3-right" title="News"><i class="fa fa-globe"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white  w3-right" title="News"><i class="fa fa-certificate"></i></a>
 
 
   <input type="text" name="search" placeholder="Search.." class="w3-bar-item w3-input w3-border w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" style="width:200px">
@@ -56,10 +81,10 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <a href="#" class="w3-bar-item w3-button">Personal & Settings</a>
       <a href="#" class="w3-bar-item w3-button">Email Preferences</a>
       <a href="#" class="w3-bar-item w3-button">Help</a>
-      <a href="#" class="w3-bar-item w3-button">Log Out</a>
+      <a href="{{ route('logout') }}" class="w3-bar-item w3-button">Log Out</a>
     </div>
   </div>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white  w3-right" title="Messages"><i class="fa fa-envelope"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white  w3-right" title="Messages"><i class="material-icons">message</i></a>
   <div class="w3-dropdown-hover w3-hide-small w3-right">
     <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
