@@ -1,32 +1,69 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import Vue from 'vue'
+import store from '~/store'
+import router from '~/router'
+import App from '~/components/App'
+import Snackbar from 'vuejs-snackbar'
 
-require('./bootstrap');
+// import LogRocket from 'logrocket'
+// import VueInputDropdown from 'vue-input-dropdown'
+import vueDebounce from 'vue-debounce'
+import VueContentPlaceholders from 'vue-content-placeholders'
+import VueExpandableImage from 'vue-expandable-image'
+import Vue2TouchEvents from 'vue2-touch-events'
+import VueSocialSharing from 'vue-social-sharing'
+import Paginate from 'vuejs-paginate'
 
-window.Vue = require('vue').default;
+import '~/plugins'
+import '~/components'
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+// import Echo from 'laravel-echo'
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+// window.Pusher = require('pusher-js')
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// window.Echo = new Echo({
+//   broadcaster: 'pusher',
+//   key: process.env.MIX_PUSHER_APP_KEY,
+//   cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//   encrypted: false
+// })
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+// LogRocket.init('i0tmx9/phive')
 
-const app = new Vue({
-    el: '#app',
-});
+import VueMatchMedia from '@webqam/vue-match-media'
+const breakpoints = {
+  xs: '360px',
+  sm: '410px',
+  md: '768px',
+  lg: '992px',
+  xl: '1280px',
+  xxl: '1366px'
+}
+
+const VueScrollTo = require('vue-scrollto')
+
+Vue.use(VueScrollTo, {
+  easing: 'ease-in-out',
+  duration: 60,
+  offset: -60,
+  force: true,
+  cancelable: true
+})
+Vue.use(VueSocialSharing)
+Vue.use(Vue2TouchEvents)
+Vue.use(VueContentPlaceholders)
+Vue.use(VueExpandableImage)
+Vue.use(VueMatchMedia, { breakpoints })
+Vue.use(vueDebounce)
+// Vue.use(VueInputDropdown)
+
+Vue.component('snackbar', Snackbar)
+Vue.component('paginate', Paginate)
+
+Vue.config.productionTip = true
+
+/* eslint-disable no-new */
+new Vue({
+  store,
+  router,
+  ...App
+})
