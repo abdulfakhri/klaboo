@@ -88,7 +88,7 @@
 <script>
 import axios from 'axios'
 import { mapGetters } from 'vuex'
-import MessageItem from '~/components/MessageItem.vue'
+import MessageItem from '../components/MessageItem.vue'
 import snarkdown from 'snarkdown'
 
 export default {

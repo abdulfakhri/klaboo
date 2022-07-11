@@ -23,8 +23,8 @@
 
 <script>
 import axios from 'axios'
-import TopBoardList from '~/components/TopBoardList'
-import LeaderboardItem from '~/components/LeaderboardItem'
+import TopBoardList from '../components/TopBoardList'
+import LeaderboardItem from '../components/LeaderboardItem'
 
 export default {
   name: 'LeaderboardPage',

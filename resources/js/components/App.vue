@@ -19,7 +19,7 @@ import { loadProgressBar } from 'axios-progress-bar'
 
 loadProgressBar()
 
-const requireContext = require.context('~/layouts', false, /.*\.vue$/)
+const requireContext = require.context('../layouts', false, /.*\.vue$/)
 
 const layouts = requireContext.keys()
   .map(file =>

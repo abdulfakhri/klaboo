@@ -1361,8 +1361,8 @@ select:focus + .focus {
   margin: 0rem 0rem 0.5rem;
   border-radius: 0.2rem;
   line-height: 2rem;
-  color: white;
-  background: #333333;
+  color: rgb(255, 255, 255);
+  background: rgb(51, 51, 51);
   box-shadow: rgba(0, 0, 0, 0.15) 0rem 0.1rem 0.25rem;
   cursor: pointer;
   text-align: center;

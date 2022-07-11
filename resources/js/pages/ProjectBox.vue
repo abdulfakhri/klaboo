@@ -107,7 +107,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ProjectBoxItem from '~/components/ProjectBoxItem'
+import ProjectBoxItem from '../components/ProjectBoxItem'
 
 export default {
   name: 'ProjectBoxPage',

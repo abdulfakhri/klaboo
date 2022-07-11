@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+/*
 Route::get('/', function () {
     return view('Spa');
 });
-
+*/
+Route::get('/', function () {
+    return view('Welcome');
+});
 /*
 
 

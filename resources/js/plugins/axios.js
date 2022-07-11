@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '~/store'
-import router from '~/router'
+import store from '../store'
+import router from '../router'
 
 axios.interceptors.request.use(request => {
   const token = store.getters['auth/token']

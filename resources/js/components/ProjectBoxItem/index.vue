@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import ProjectBoxItemWaiting from '~/components/ProjectBoxItem/Student/ProjectBoxItemWaiting'
-import ProjectBoxItemAccepted from '~/components/ProjectBoxItem/Student/ProjectBoxItemAccepted'
-import ProjectBoxItemRejected from '~/components/ProjectBoxItem/Student/ProjectBoxItemRejected'
+import ProjectBoxItemWaiting from '/components/ProjectBoxItem/Student/ProjectBoxItemWaiting'
+import ProjectBoxItemAccepted from '/components/ProjectBoxItem/Student/ProjectBoxItemAccepted'
+import ProjectBoxItemRejected from '/components/ProjectBoxItem/Student/ProjectBoxItemRejected'
 import ProjectBoxItemWaitingToStart from '~/components/ProjectBoxItem/Student/ProjectBoxItemWaitingToStart'
 import ProjectBoxItemProjectStarted from '~/components/ProjectBoxItem/Student/ProjectBoxItemProjectStarted'
 import ProjectBoxItemBailOut from '~/components/ProjectBoxItem/Student/ProjectBoxItemBailOut'

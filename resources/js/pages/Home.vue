@@ -68,7 +68,7 @@
 <script>
 import axios from 'axios'
 import { mapGetters } from 'vuex'
-import TopBoardList from '~/components/TopBoardList'
+import TopBoardList from '../components/TopBoardList'
 
 export default {
   name: 'HomePage',

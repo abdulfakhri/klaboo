@@ -112,7 +112,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import InboxItem from '~/components/InboxItem.vue'
+import InboxItem from '../components/InboxItem.vue'
 
 export default {
   name: 'InboxPage',
