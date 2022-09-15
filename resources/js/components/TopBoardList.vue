@@ -21,7 +21,7 @@
 
 <script>
 // import { mapGetters } from 'vuex'
-import TopBoardItem from '~/components/TopBoardItem'
+import TopBoardItem from './TopBoardItem'
 
 export default {
   name: 'TopBoardList',

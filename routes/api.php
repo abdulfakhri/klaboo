@@ -77,7 +77,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('user/{user:tagname}/message/send', 'MessageController@sendMessage');
 
 });
-
+/*
 Route::group(['middleware' => 'guest:api'], function () {
     Route::post('login', 'Auth\LoginController@login');
     Route::post('register', 'Auth\RegisterController@register');
@@ -88,9 +88,17 @@ Route::group(['middleware' => 'guest:api'], function () {
     Route::post('email/verify/{user}', 'Auth\VerificationController@verify')->name('verification.verify');
     Route::post('email/resend', 'Auth\VerificationController@resend');
 });
-
+*/
 Route::group([], function () {
     Route::get('home', 'HomeController@index');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('register', 'Auth\RegisterController@register');
+
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+    Route::post('email/verify/{user}', 'Auth\VerificationController@verify')->name('verification.verify');
+    Route::post('email/resend', 'Auth\VerificationController@resend');
 
     Route::get('user/{user:tagname}', 'ProfileController@getUser');
 

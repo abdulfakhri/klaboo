@@ -31,7 +31,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ShortlistItemTeam from '~/components/ShortlistItemTeam'
+//import ShortlistItemTeam from '~/components/ShortlistItemTeam'
 
 export default {
   name: 'ShortlistTeamPage',

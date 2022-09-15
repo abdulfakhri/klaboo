@@ -199,7 +199,7 @@ import Form from 'vform'
 import { MonthPicker } from 'vue-month-picker'
 
 import { mapGetters } from 'vuex'
-import ExperienceItem from '~/components/ExperienceItem'
+//import ExperienceItem from '../ExperienceItem'
 
 export default {
   name: 'NewcomerPage2',

@@ -130,7 +130,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import * as timeago from 'timeago.js'
-import ExperienceItem from '~/components/ExperienceItem'
+//import ExperienceItem from '~/components/ExperienceItem'
 
 export default {
   name: 'UserProfileInfosPage',

@@ -21,7 +21,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import PartyItem from '~/components/Party/PartyItem'
+//import PartyItem from '../Party/PartyItem'
 
 export default {
   name: 'PartyAsMemberPage',

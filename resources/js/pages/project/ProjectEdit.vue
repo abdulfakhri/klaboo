@@ -355,7 +355,7 @@
 import Form from 'vform'
 import { serialize } from 'object-to-formdata'
 import { mapGetters } from 'vuex'
-import RequirementItem from '~/components/RequirementItem'
+//import RequirementItem from '~/components/RequirementItem'
 
 export default {
   name: 'EditPostedProject',

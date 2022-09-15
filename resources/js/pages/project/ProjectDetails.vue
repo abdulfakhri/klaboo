@@ -8,9 +8,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ProjectDetailsHiring from '~/components/ProjectDetails/ProjectDetailsHiring'
-import ProjectDetailsOngoing from '~/components/ProjectDetails/ProjectDetailsOngoing'
-import ProjectDetailsFinished from '~/components/ProjectDetails/ProjectDetailsFinished'
+//import ProjectDetailsHiring from '../components/ProjectDetails/ProjectDetailsHiring'
+//import ProjectDetailsOngoing from '../components/ProjectDetails/ProjectDetailsOngoing'
+//import ProjectDetailsFinished from '../components/ProjectDetails/ProjectDetailsFinished'
 
 export default {
   name: 'ProjectDetailsPage',

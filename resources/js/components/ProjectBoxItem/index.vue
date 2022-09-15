@@ -20,17 +20,18 @@
 </template>
 
 <script>
-import ProjectBoxItemWaiting from '/components/ProjectBoxItem/Student/ProjectBoxItemWaiting'
-import ProjectBoxItemAccepted from '/components/ProjectBoxItem/Student/ProjectBoxItemAccepted'
-import ProjectBoxItemRejected from '/components/ProjectBoxItem/Student/ProjectBoxItemRejected'
-import ProjectBoxItemWaitingToStart from '~/components/ProjectBoxItem/Student/ProjectBoxItemWaitingToStart'
-import ProjectBoxItemProjectStarted from '~/components/ProjectBoxItem/Student/ProjectBoxItemProjectStarted'
-import ProjectBoxItemBailOut from '~/components/ProjectBoxItem/Student/ProjectBoxItemBailOut'
-import ProjectBoxItemHiring from '~/components/ProjectBoxItem/Lecturer/ProjectBoxItemHiring'
-import ProjectBoxItemOngoing from '~/components/ProjectBoxItem/Lecturer/ProjectBoxItemOngoing'
-import ProjectBoxItemConfirmation from '~/components/ProjectBoxItem/Lecturer/ProjectBoxItemConfirmation'
-import ProjectBoxItemFinished from '~/components/ProjectBoxItem/Lecturer/ProjectBoxItemFinished'
-import ProjectBoxItemDraft from '~/components/ProjectBoxItem/Lecturer/ProjectBoxItemDraft'
+
+import ProjectBoxItemWaiting from '../Student/ProjectBoxItemWaiting'
+import ProjectBoxItemAccepted from '../Student/ProjectBoxItemAccepted'
+import ProjectBoxItemRejected from '../Student/ProjectBoxItemRejected'
+import ProjectBoxItemWaitingToStart from '../Student/ProjectBoxItemWaitingToStart'
+import ProjectBoxItemProjectStarted from '../Student/ProjectBoxItemProjectStarted'
+import ProjectBoxItemBailOut from '../Student/ProjectBoxItemBailOut'
+import ProjectBoxItemHiring from '../Lecturer/ProjectBoxItemHiring'
+import ProjectBoxItemOngoing from '../Lecturer/ProjectBoxItemOngoing'
+import ProjectBoxItemConfirmation from '../Lecturer/ProjectBoxItemConfirmation'
+import ProjectBoxItemFinished from '../Lecturer/ProjectBoxItemFinished'
+import ProjectBoxItemDraft from '../Lecturer/ProjectBoxItemDraft'
 
 export default {
   name: 'ProjectBoxItem',

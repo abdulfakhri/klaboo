@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import store from './/store'
-import router from './/router'
-import App from './/components/App'
+import store from './store'
+import router from './router'
+import App from './components/App'
 import Snackbar from 'vuejs-snackbar'
 
 // import LogRocket from 'logrocket'
@@ -13,8 +13,8 @@ import Vue2TouchEvents from 'vue2-touch-events'
 import VueSocialSharing from 'vue-social-sharing'
 import Paginate from 'vuejs-paginate'
 
-import './/plugins'
-import './/components'
+import './plugins'
+import './components'
 
 // import Echo from 'laravel-echo'
 

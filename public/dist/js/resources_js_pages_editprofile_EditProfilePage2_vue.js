@@ -14,10 +14,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_month_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-month-picker */ "./node_modules/vue-month-picker/src/index.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '~/components/ExperienceItem'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var object_to_formdata__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! object-to-formdata */ "./node_modules/object-to-formdata/src/index.js");
-/* harmony import */ var object_to_formdata__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(object_to_formdata__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var object_to_formdata__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! object-to-formdata */ "./node_modules/object-to-formdata/src/index.js");
+/* harmony import */ var object_to_formdata__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(object_to_formdata__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -46,14 +45,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
+ //import ExperienceItem from '../components/ExperienceItem'
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'EditProfile2Page',
   components: {
     MonthPicker: vue_month_picker__WEBPACK_IMPORTED_MODULE_1__.MonthPicker,
-    ExperienceItem: Object(function webpackMissingModule() { var e = new Error("Cannot find module '~/components/ExperienceItem'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())
+    ExperienceItem: ExperienceItem
   },
   metaInfo: function metaInfo() {
     return {
@@ -89,7 +88,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
     user: 'auth/user',
     snackbar: 'notification/snackbar'
   })),
@@ -360,7 +359,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                 _this10.form2.submit('post', '/api/user/cv', {
                   transformRequest: [function (data, headers) {
-                    return (0,object_to_formdata__WEBPACK_IMPORTED_MODULE_3__.serialize)(data);
+                    return (0,object_to_formdata__WEBPACK_IMPORTED_MODULE_2__.serialize)(data);
                   }]
                 }).then(function (_ref2) {
                   var data = _ref2.data;

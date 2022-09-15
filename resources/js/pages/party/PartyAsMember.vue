@@ -23,7 +23,7 @@
 <script>
 import axios from 'axios'
 import { mapGetters } from 'vuex'
-import MemberItem from '~/components/Party/MemberItem'
+//import MemberItem from '~/components/Party/MemberItem'
 
 export default {
   name: 'PartyAsLeaderPage',

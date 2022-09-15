@@ -11,7 +11,7 @@
     </div>
     <div class="slide slide-2__container">
       <div v-if="$matchMedia.xl" class="slide-2__left">
-        <img class="slide-2__image" src="/images/slide-2.png" alt="">
+       
       </div>
       <div class="slide-2__right">
         <h2 class="slide-2__heading">

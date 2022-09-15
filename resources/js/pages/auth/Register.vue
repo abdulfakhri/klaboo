@@ -173,7 +173,7 @@ export default {
   methods: {
     async register () {
       // Register the user.
-      const { data } = await this.form.post('/api/register')
+      const { data } = await this.form.post('/register')
 
       // Must verify email first.
       if (data.status) {

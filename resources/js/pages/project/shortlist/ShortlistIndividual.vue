@@ -91,7 +91,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ShortlistItemIndividual from '~/components/ShortlistItemIndividual'
+//import ShortlistItemIndividual from '~/components/ShortlistItemIndividual'
 
 export default {
   name: 'ShortlistIndividualPage',
