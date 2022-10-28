@@ -1,0 +1,618 @@
+<?php
+$path=$_SERVER['DOCUMENT_ROOT'];
+include("$path/model.php");
+
+
+class bootcamp extends model  {
+
+   
+
+public function __construct()
+{
+    parent::__construct();
+    parent::connect();
+    
+}
+
+   public function insert($subject, $content, $category, $subcategory ,$chapter, $title, $codePHP, $codeJS, $commentPHP, $commentJS, $coderesult, $imgUrl, $picUrl){
+       $sql = "INSERT INTO posts (subject, content, category, subcategory ,chapter, title, codePHP, codeJS, commentPHP, commentJS, coderesult, picUrl, imgUrl) VALUES (:subject, :content, :title, :category, :subcategory, :chapter, :codePHP, :codeJS, :commentPHP, :commentJS, :coderesult, :picUrl, :imgUrl)";
+       $stmt = $this->db->prepare($sql);
+       $stmt->bindParam(':subject', $subject);
+       $stmt->bindParam(':content', $content);
+       $stmt->bindParam(':category', $category);
+       $stmt->bindParam(':subcategory', $subcategory);
+       $stmt->bindParam(':chapter', $chapter);
+       $stmt->bindParam(':codePHP', $codePHP);
+       $stmt->bindParam(':codeJS', $codeJS);
+       $stmt->bindParam(':commentPHP', $commentPHP);
+       $stmt->bindParam(':commentJS', $commentJS);
+       $stmt->bindParam(':title', $title);
+       $stmt->bindParam(':picUrl', $picUrl);
+       $stmt->bindParam(':imgUrl', $imgUrl);
+       $stmt->bindParam(':coderesult', $coderesult);
+       $stmt->execute();
+   }
+
+
+   function delete($id){
+
+
+       $sql = "DELETE FROM posts WHERE id=:id";
+       $stmt = $this->db->prepare($sql);
+       $stmt->bindParam(':id',$id);
+       $stmt->execute();
+       return header("Location: index.php");
+
+   }
+
+
+   function update($subject,$category,$subcategory,$chapter,$title,$content,$codePHP,$codeReusult,$imgUrl,$videoUrl,$id){
+
+
+       $content="<pre>".$content."</pre>";
+       $codePHP = "<pre>".$codePHP."</pre>";
+
+
+
+       $sql = "UPDATE posts SET subject=:subject,category=:category,subcategory=:subcategory,chapter=:chapter,title=:title,content=:content,codePHP=:codePHP,coderesult=:coderesult,imgUrl=:imgUrl,picUrl=:picUrl WHERE id=:id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':subject',$subject);
+        $stmt->bindParam(':category',$category);
+        $stmt->bindParam(':subcategory',$subcategory);
+        $stmt->bindParam(':chapter',$chapter);
+        $stmt->bindParam(':title',$title);
+        $stmt->bindParam(':content',$content);
+        $stmt->bindParam(':codePHP',$codePHP);
+        $stmt->bindParam(':coderesult',$codeReusult);
+        $stmt->bindParam(':imgUrl',$imgUrl);
+        $stmt->bindParam(':picUrl',$videoUrl);
+        $stmt->bindParam(':id',$id);
+        $stmt->execute();
+        return header("Location: index.php");
+    
+    }
+
+    function updateEdit($content,$codePHP,$codeReusult,$imgUrl,$id){
+
+
+     $content="<pre>".$content."</pre>";
+     $codePHP = "<pre>".$codePHP."</pre>";
+     $sql = "UPDATE posts SET content=:content,codePHP=:codePHP,coderesult=:coderesult,imgUrl=:imgUrl WHERE id=:id";
+     $stmt = $this->db->prepare($sql);
+   
+      $stmt->bindParam(':content',$content);
+      $stmt->bindParam(':codePHP',$codePHP);
+      $stmt->bindParam(':coderesult',$codeReusult);
+      $stmt->bindParam(':imgUrl',$imgUrl);
+      $stmt->bindParam(':id',$id);
+      $stmt->execute();
+      return header("Location: editing.php");
+  
+  }
+  
+  
+    function fillCates($category,$id){
+       $sql = "UPDATE posts SET subcategory=:category WHERE id=:id";
+       $stmt = $this->db->prepare($sql);
+       $stmt->bindParam(':category',$category);
+       $stmt->bindParam(':id',$id);
+       $stmt->execute();
+       return header("Location: index.php");
+   }
+
+    public function view_by_id($id){
+    
+    
+        $sql = "SELECT * FROM posts WHERE id=:id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function listCates($topic){
+        $sql = "SELECT * FROM posts WHERE subcategory=:subcate";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':subcate', $topic);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function listTopics($topic){
+    
+    
+        $sql = "SELECT DISTINCT title FROM posts WHERE chapter=:chapter";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':chapter', $topic);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function listChapters($topic){
+    
+    
+        $sql = "SELECT * FROM posts WHERE chapter=:chapter";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':chapter', $topic);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function view(){
+        
+        $sql = "SELECT * FROM posts";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll();
+        return $results;
+    }
+
+    public function viewChapter($chapter){
+        
+        $sql = "SELECT * FROM posts WHERE chapter=:chapter";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':chapter', $chapter);
+        $stmt->execute();
+        $results = $stmt->fetchAll();
+        return $results;
+    }
+
+    public function viewSubcategory($subcategory){
+        
+        $sql = "SELECT DISTINCT chapter FROM posts WHERE subcategory=:subcategory";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':subcategory', $subcategory);
+        $stmt->execute();
+        $results = $stmt->fetchAll();
+        return $results;
+    }
+
+      /*
+       public function viewTopic($topic){
+           
+           $sql = "SELECT * FROM posts WHERE subject=:sub";
+           $stmt = $this->db->prepare($sql);
+           $stmt->bindParam(':sub', $topic);
+           $stmt->execute();
+           $results = $stmt->fetchAll();
+           foreach ($results as $result) {
+               $codePHP=$result['codePHP'];
+               $codePHP=str_replace("<pre>","",$codePHP);
+               $codePHP=str_replace("</pre>","",$codePHP);
+ 
+               $coderesult=$result['coderesult'];
+               $commentPHP=$result['commentPHP'];
+               $coderesult=str_replace("<pre>","",$coderesult);
+               $coderesult=str_replace("</pre>","",$coderesult);
+ 
+               $postId=$result['id'];
+ 
+                 $i=1;
+                 $i++;
+                 $link=str_replace(" ","",$result['title']);
+                 $link=str_replace("?","",$link);
+                 $link=str_replace("/","",$link);
+                 $content=$result['content'];
+ 
+                 $content=str_replace("<pre>","",$content);
+                 $content=str_replace("</pre>","",$content);
+                // $content=str_replace("\n","\n\n",$content);
+                 $content=trim($content);
+                 
+ 
+                 
+ 
+                 $imgUrl=$result['imgUrl'];
+               
+                 echo '
+                 <div id="accordion">
+                 <div class="card">
+                 <div class="card-header" id="headingTwo">
+                   <h5 class="mb-0">
+                     <button  onclick="read()" class="btn btn-info collapsed" data-toggle="collapse" data-target="#'.$link.'" aria-expanded="true"  aria-controls="'.$link.'">
+                     '.$result['title'].'
+                     </button>
+                    <a href="view.php?id='.$postId.'">Zoom</a>
+                   </h5>
+                   
+                 </div>
+                 <div id="'.$link.'" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                   <div class="card-body">
+                   <div class="row">
+                   <form   method="post" action="">
+                  
+                     <div class="col-sm-5">
+                     <input type="submit" name="update-editing"  class="btn btn-info" value="Editor" />
+                   <textarea  id="content"  name="content" class="form-control"  rows="20" cols="30"  >'.$content.'</textarea> <br>
+                 
+                   </div>
+ 
+                   <div class="col-sm-3">
+                 
+                   <div class="row">
+                   <br><br />
+                   <textarea  id="codePHP"  name="codePHP"   class="form-control"  rows="20" cols="3">'.$codePHP.'</textarea>
+                   </div>
+                  
+                   <div class="row">
+              
+                   <textarea  id="coderesult" name="coderesult"  class="form-control"  rows="4" cols="3" >'.$coderesult.'</textarea>
+                   </div>
+ 
+                   </div>
+ 
+ 
+                     <div class="col-sm-3">
+                     <br><br />
+                         <img  alt="Responsive image" src="'.$imgUrl.'" width="500px" height="500px"><br/>
+                         <input type="text" name="imgUrl" id="imgUrl" class="form-control" value="'.$imgUrl.'" ><br/><br/>
+                         <input type="hidden" name="pid" id="pid" value="'.$postId.'" ><br/><br/>
+                     </div>
+                   
+                  
+                  
+                   </form>
+                     </div>
+                   </div>
+                 </div>
+            
+               </div>
+               </div>
+               ';
+                 
+           }
+       }
+       */
+
+
+    
+   public function viewTopic($sub){
+        
+       $sql = "SELECT DISTINCT chapter FROM posts WHERE subject=:sub";
+       $stmt = $this->db->prepare($sql);
+       $stmt->bindParam(':sub', $sub);
+       $stmt->execute();
+       $results = $stmt->fetchAll();
+       return $results;
+   }
+
+
+   public function wTube($link){
+
+    $link=str_replace("https://www.youtube.com/watch?v=","",$link);
+    $link="https://www.youtube.com/embed/".$link."?start=6";
+
+
+    echo ' <iframe width="100%" height="100%"  target="_blank" 
+    src="'.$link.'" title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; 
+    encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>';
+
+   }
+
+
+
+   public function research($topic){
+    $url = "https://en.wikipedia.org/w/api.php?action=query&prop=info&titles=".$topic;
+
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    $resp = curl_exec($curl);
+    curl_close($curl);
+    var_dump($resp);
+    }
+    
+
+    public function techNews($topic){
+                   
+
+                                 if($topic=="math"){
+
+                                  $rss_link1='https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/spotlight/learning-science-math/rss.xml';
+
+                                  $rss = simplexml_load_file($rss_link1);
+                                  echo '<h1><a class="color_text_1" href="#">'. $rss->channel->title . '</h1>';	
+                                  foreach ($rss->channel->item as $item) {
+                               
+                                   echo ' <div class="col-sm-12 center_2_inner_main_1">
+                                        
+                                   <div class="col-sm-8">
+                                   <div class="center_2_inner_2">';
+                                     echo '<h2><a href="'. $item->link .'">' . $item->title . "</a></h2>";
+
+                                   echo "<article><a href='#'>" . $item->description . "</a></article>";
+                                   echo "<article><a href='#'>" . $item->content. "</a></article>";
+                                    echo "<article><a href='?link=".$item->link."'>Read More</a></article>";
+                                   echo '</div>
+                                        </div>
+                                     ';
+                                  } 
+                                  
+
+                                 }elseif ($topic=="programming") {
+                                
+                                    $rss_link1='https://www.thecrazyprogrammer.com/feed';
+
+                                  $rss = simplexml_load_file($rss_link1);
+                                  echo '<h1><a class="color_text_1" href="#">'. $rss->channel->title . '</h1>';	
+                                  foreach ($rss->channel->item as $item) {
+                               
+                                   echo ' <div class="col-sm-12 center_2_inner_main_1">
+                                        
+                                   <div class="col-sm-8">
+                                   <div class="center_2_inner_2">';
+                                     echo '<h2><a href="'. $item->link .'">' . $item->title . "</a></h2>";
+
+                                   echo "<article><a href='#'>" . $item->description . "</a></article>";
+                                   echo "<article><a href='#'>" . $item->content. "</a></article>";
+                                   echo '</div>
+                                        </div>
+                                     ';
+                                  } 
+                                }elseif ($topic=="ai") {
+                                    
+                                    $rss_ais=[
+                                    "https://developer.ibm.com/patterns/category/artificial-intelligence/feed/",
+                                    "https://openai.com/blog/rss/",
+                                    "https://bair.berkeley.edu/blog/feed.xml",
+                                    "https://towardsdatascience.com/feed"
+
+                                    ];
+                                    
+                                 for($n=0;$n<count($rss_ais);$n++){
+                                    
+                                $rss = simplexml_load_file($rss_ais[$n]);
+                                  echo '<h1><a class="color_text_1" href="#">'. $rss->channel->title . '</h1>';	
+                                  foreach ($rss->channel->item as $item) {
+                               
+                                   echo ' <div class="col-sm-12 center_2_inner_main_1">
+                                        
+                                   <div class="col-sm-8">
+                                   <div class="">';
+                                     echo '<h2><a href="'. $item->link .'">' . $item->title . "</a></h2>";
+
+                                   echo "<article><a href='#'>" . $item->description . "</a></article>";
+                                   echo "<article><a href='#'>" . $item->content. "</a></article>";
+                                   echo '</div>
+                                        </div>
+                                     ';
+                                  }
+                                    
+                                }
+                                  
+
+                                  
+                                  
+        }
+
+
+
+
+
+
+
+
+    /*
+    public function listPostsEdit($chapter){
+        
+       $results=$this->viewChapter($chapter);
+       foreach ($results as $result) {
+
+         $codePHP=$result['codePHP'];
+         $codePHP=str_replace("<pre>","",$codePHP);
+         $codePHP=str_replace("</pre>","",$codePHP);
+
+         $coderesult=$result['coderesult'];
+         $commentPHP=$result['commentPHP'];
+         $coderesult=str_replace("<pre>","",$coderesult);
+         $coderesult=str_replace("</pre>","",$coderesult);
+
+         $postId=$result['id'];
+
+           $i=1;
+           $i++;
+           $link=str_replace(" ","",$result['title']);
+           $link=str_replace("?","",$link);
+           $link=str_replace("/","",$link);
+           $content=$result['content'];
+
+           $content=str_replace("<pre>","",$content);
+           $content=str_replace("</pre>","",$content);
+          // $content=str_replace("\n","\n\n",$content);
+           $content=trim($content);
+           
+
+           
+
+           $imgUrl=$result['imgUrl'];
+         
+           echo '
+           <div id="accordion">
+           <div class="card">
+           <div class="card-header" id="headingTwo">
+             <h5 class="mb-0">
+               <button  onclick="read()" class="btn btn-info collapsed" data-toggle="collapse" data-target="#'.$link.'" aria-expanded="true"  aria-controls="'.$link.'">
+               '.$result['title'].'
+               </button>
+              <a href="view.php?id='.$postId.'">Zoom</a>
+             </h5>
+             
+           </div>
+           <div id="'.$link.'" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+             <div class="card-body">
+             <div class="row">
+             <form   method="post" action="">
+            
+               <div class="col-sm-5">
+               <input type="submit" name="update-editing"  class="btn btn-info" value="Editor" />
+             <textarea  id="content"  name="content" class="form-control"  rows="20" cols="30"  >'.$content.'</textarea> <br>
+           
+             </div>
+
+             <div class="col-sm-3">
+           
+             <div class="row">
+             <br><br />
+             <textarea  id="codePHP"  name="codePHP"   class="form-control"  rows="20" cols="3">'.$codePHP.'</textarea>
+             </div>
+            
+             <div class="row">
+        
+             <textarea  id="coderesult" name="coderesult"  class="form-control"  rows="4" cols="3" >'.$coderesult.'</textarea>
+             </div>
+
+             </div>
+
+
+               <div class="col-sm-3">
+               <br><br />
+                   <img  alt="Responsive image" src="'.$imgUrl.'" width="500px" height="500px"><br/>
+                   <input type="text" name="imgUrl" id="imgUrl" class="form-control" value="'.$imgUrl.'" ><br/><br/>
+                   <input type="hidden" name="pid" id="pid" value="'.$postId.'" ><br/><br/>
+               </div>
+             
+            
+            
+             </form>
+               </div>
+             </div>
+           </div>
+      
+         </div>
+         </div>
+         ';
+          
+       }
+
+    }
+    */
+
+
+}
+
+/*
+
+if(isset($_POST['add'])){
+
+$subject = $_POST['subject'];
+$category = $_POST['category'];
+$chapter = $_POST['chapter'];
+$subcategory = $_POST['subcategory'];
+$title = $_POST['title'];
+$content = $_POST['content'];
+$codePHP = $_POST['codePHP'];
+$codeJS = $_POST['codeJS'];
+$commentPHP = $_POST['commentPHP'];
+$commentJS = $_POST['commentJS'];
+$codeResult = $_POST['code_result'];
+$imgUrl = $_POST['imgUrl'];
+$picUrl = $_POST['picUrl'];
+
+$insert = new controller();
+
+$insert->insert($subject, $content, $category, $subcategory, $chapter, $title, $codePHP, $codeJS, $commentPHP, $commentJS, $codeResult, $imgUrl, $picUrl);
+return header("Location: index.php");
+
+}
+
+
+function deleteNotation($nid){
+
+$delete=new controller();
+
+$delete->delete($nid);
+}
+
+
+if(isset($_POST['update'])){
+
+$edit = new Controller();
+
+$subject=$_POST['subject'];
+$category=$_POST['category'];
+$subcategory=$_POST['subcategory'];
+$chapter=$_POST['chapter'];
+$title=$_POST['title'];
+$content=$_POST['content'];
+$code=$_POST['code'];
+$codeReusult=$_POST['codeReusult'];
+$imgUrl=$_POST['imgUrl'];
+$videoUrl=$_POST['videoUrl'];
+$id=$_POST['pid'];
+
+$subject=$edit->sanitize($subject);
+$category=$edit->sanitize($category);
+$subcategory=$edit->sanitize($subcategory);
+$chapter=$edit->sanitize($chapter);
+$title=$edit->sanitize($title);
+$content=$edit->sanitize($content);
+$code=$edit->sanitize($code);
+$codeReusult=$edit->sanitize($codeReusult);
+$imgUrl=$edit->sanitize($imgUrl);
+$videoUrl=$edit->sanitize($videoUrl);
+$id=$edit->sanitize($id);
+
+
+$res=$edit->update($subject,$category,$subcategory,$chapter,$title,$content,$code,$codeReusult,$imgUrl,$videoUrl,$id);
+if($res==true){
+return header("Location: index.php");
+}
+
+}
+
+if(isset($_POST['update-editing'])){
+
+$edit = new Controller();
+
+$title=$_POST['title'];
+$content=$_POST['content'];
+$code=$_POST['codePHP'];
+$coderesult=$_POST['coderesult'];
+$imgUrl=$_POST['imgUrl'];
+
+$id=$_POST['pid'];
+
+$res=$edit->updateEdit($content,$code,$coderesult,$imgUrl,$id);
+if($res==true){
+return header("Location: editing.php");
+}
+
+
+
+}
+
+if(isset($_POST['update_titles'])){
+
+$edit = new Controller();
+
+$subject=$_POST['subject'];
+$category=$_POST['category'];
+$subcategory=$_POST['subcategory'];
+$chapter=$_POST['chapter'];
+$title=$_POST['title'];
+$content=$_POST['content'];
+$code=$_POST['code'];
+$codeReusult=$_POST['codeReusult'];
+$imgUrl=$_POST['imgUrl'];
+$videoUrl=$_POST['videoUrl'];
+$id=$_POST['pid'];
+
+
+$res=$edit->updateCates($subject,$category,$subcategory,$chapter,$title,$id);
+if($res==true){
+    return header("Location: index.php");
+}
+}
+
+*/
