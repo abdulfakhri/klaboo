@@ -137,9 +137,10 @@ class Auths extends Model{
                 $_SESSION['name'] = $row['name'];
 
 
+                $path=$_SERVER['DOCUMENT_ROOT'];
+                $link=$path."/public/basket/mg/index.php";
 
-
-            header('Location: /index.php');
+            header('Location: /$link');
 
 
         }else{

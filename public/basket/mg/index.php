@@ -1,6 +1,7 @@
-<?php 
+<?php
 session_start();
-include 'mg/mg_controller.php';
+$path=$_SERVER['DOCUMENT_ROOT'];
+include ("$path/public/mg/mg_controller.php");
 $mg=new Management();
 $mg->getAuthCheck();
 include("nav.php");
@@ -9,8 +10,8 @@ include("nav.php");
         <div class="w3-container w3-row">
         <a href="/profile.php" class="w3-bar-item w3-button">
               <h1><?PHP  echo $_SESSION['name'];?></h1>  </a>
-    
-    
+
+
         <hr>
         <a href="#tasks" class="w3-bar-item w3-button">
              Tasks
@@ -32,10 +33,10 @@ include("nav.php");
             Strategy Making
             </a>
         <hr>
-    
-              
-              
-           
+
+
+
+
         </div>
     </nav>
 
@@ -52,14 +53,14 @@ include("nav.php");
     <a href="fm.php">Finance</a> | <a href="fm_cr.php">Credit Cards</a>
     <div id="tasks">
     <form method="post" action="mg/mg_controller.php" id="myDIV" class="">
-  
+
   <input type="text" class="" id="taskName" name="taskName" placeholder="Task Name" style="width:20%;">
 
   <input type="date"  class="" id="dueDate" name="dueDate" placeholder="Task Date" style="width:15%;">
   <input type="time" class="" id="dueTime" name="dueTime"  placeholder="Task Time" style="width:15%;"/>
 
 <select class="" name="task_type" style="width:15%;">
-   
+
     <option value="daily">Daily Routines</option>
     <option value="monthly">Month</option>
     <option value="weekly">Weekly</option>
@@ -103,15 +104,15 @@ include("nav.php");
     <div class="w3-third">
       <h5><b> Daily Tasks</b> | <?php echo date("d"); ?></h5>
       <table class="w3-table w3-striped w3-white">
-      
-       <?php  
+
+       <?php
        $time=date("H:i");
        $mg->daily();
        ?>
 
       </table>
 
-  
+
 
 
 
@@ -137,30 +138,31 @@ include("nav.php");
     <table class="w3-table w3-striped w3-white">
        <?php  $mg->plans();?>
       </table>
-  
+
 
       </div>
     </div>
 
 
 
-      
+
     </div>
   </div>
   <hr>
-  
+
   <script>
   function showAddTaskForm(){
-    
+
     document.getElementById("tasks").style.display = "block";
   }
 
   function hideAddTaskForm(){
     document.getElementById("tasks").style.display = "none";
-  
+
   }
 
   </script>
 
 
 <?php include("footer.php");   ?>
+

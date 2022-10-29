@@ -11,14 +11,18 @@ class Management extends Model{
         parent::timeZone();
         parent::connect();
     }
+
+
     public function encData($data){
 
         return base64_encode($data);
     }
+
     public function decData($data){
 
         return base64_decode($data);
     }
+
     public function daily() {
 
         $today = date("Y-m-d");
@@ -100,8 +104,11 @@ class Management extends Model{
 
         }
 
-
     }
+
+
+
+
     public function weekly() {
 
         $today = date("Y-m-d");
