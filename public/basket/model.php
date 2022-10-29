@@ -163,6 +163,13 @@ class Auths extends Model{
         header('Location: /login.php');
     }
 
+    public function url() {
+        $url=$_SERVER['HTTP_HOST'];
+        $path=$_SERVER['DOCUMENT_ROOT'];
+        return $url;
+
+    }
+
     public function registeration(){
         $name = $this->sanitize($_POST['name']);
         $email = $this->sanitize($_POST['email']);

@@ -2,6 +2,8 @@
 session_start();
 include('model.php');
 
+$md=new Model();
+
 // On submit
 if(isset($_POST['login'])){
 
@@ -83,6 +85,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="container "   style="margin-top:50px;margin-left:10%;">
 
             <h2>Login</h2>
+            <?php echo $md->url(); ?>
+
         <form action="" method="post" class="">
             <div class="form-group">
                 <label for="email">Email address:</label>
