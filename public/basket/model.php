@@ -140,7 +140,7 @@ class Auths extends Model{
                 //$path=$_SERVER['DOCUMENT_ROOT'];
                 //$link=$path."/public/basket/mg/index.php";
 
-            header('Location: /basket/mg/index.php');
+            header('Location: /public/basket/mg/index.php');
 
 
         }else{
