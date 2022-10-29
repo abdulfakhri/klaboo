@@ -166,7 +166,7 @@ class Auths extends Model{
     public function url() {
         $url=$_SERVER['HTTP_HOST'];
         $path=$_SERVER['DOCUMENT_ROOT'];
-        return $url;
+        return $path;
 
     }
 
