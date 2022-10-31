@@ -1,6 +1,6 @@
 <?php
 $path=$_SERVER['DOCUMENT_ROOT'];
-include("/public/model.php");
+include("model.php");
 
 class Management extends Model{
 
