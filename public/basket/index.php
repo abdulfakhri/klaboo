@@ -1,109 +1,168 @@
 <?php
 session_start();
-include('model.php');
-
-$md=new Model();
-
-// On submit
-if(isset($_POST['login'])){
-
-    $uname =$_POST['email'];
-    $password = $_POST['pwd'];
-//    $remember = $_POST['remember'];
-    $auth= new Auths();
-    $auth->login($uname, $password);
-
-}
-
-
+//$path=$_SERVER['DOCUMENT_ROOT'];
+include ("mg_controller.php");
+$mg=new Management();
+$mg->getAuthCheck();
+include("nav.php");
 ?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Login </title>
-    <style>
-    Body {
-        font-family: Calibri, Helvetica, sans-serif;
-        background-color: white;;
-    }
-
-    button {
-        background-color: #4CAF50;
-        width: 100%;
-        color: orange;
-        padding: 15px;
-        margin: 10px 0px;
-        border: none;
-        cursor: pointer;
-    }
-
-    form {
-        border: 0px solid #f1f1f1;
-    }
-
-    input[type=text],
-    input[type=password] {
-        width: 100%;
-        margin: 8px 0;
-        padding: 12px 20px;
-        display: inline-block;
-        border: 2px solid green;
-        box-sizing: border-box;
-    }
-
-    button:hover {
-        opacity: 0.7;
-    }
-
-    .cancelbtn {
-        width: auto;
-        padding: 10px 18px;
-        margin: 10px 5px;
-    }
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:180px;" id="mySidebar"><br>
+        <div class="w3-container w3-row">
+        <a href="/profile.php" class="w3-bar-item w3-button">
+              <h1><?PHP  echo $_SESSION['name'];?></h1>  </a>
 
 
-    </style>
- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+        <hr>
+        <a href="#tasks" class="w3-bar-item w3-button">
+             Tasks
+            </a>
+            <hr>
+        <a href="#problem_solving" class="w3-bar-item w3-button">
+           Problem Solving
+            </a>
+            <hr>
+        <a href="#decision_making" class="w3-bar-item w3-button">
+            Decision Making
+            </a>
+            <hr>
+        <a href="#planning" class="w3-bar-item w3-button">
+             Planning
+            </a>
+            <hr>
+        <a href="#strategy_making" class="w3-bar-item w3-button">
+            Strategy Making
+            </a>
+        <hr>
 
-</style>
 
 
-</head>
 
-<body>
-    <div class="container "   style="margin-top:50px;margin-left:10%;">
+        </div>
+    </nav>
 
-            <h2>Login</h2>
-            <?php //echo $md->url(); ?>
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu" id="myOverlay"></div>
 
-        <form action="" method="post" class="">
-            <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-                <label for="pwd">Password:</label>
-                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
-            </div>
-            <div class="form-group">
-                <label for="rememberme">Remember me:</label>
-                <input type="checkbox" id="rememberme" name="rememberme">
-            </div>
-            <button type="submit" class="btn btn-default" name="login">Submit</button>
-        </form>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:180px;margin-top:43px;">
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h3><b> Create your self</b> | <?php echo date("Y-m-d"); ?></h3>
+    <a href="#" class="w3-button" onClick="showAddTaskForm()">Show Add</a> | <a href="#" class="w3-button" onClick="hideAddTaskForm()">Hide</a><br>
+    <a href="fm.php">Finance</a> | <a href="fm_cr.php">Credit Cards</a>
+    <div id="tasks">
+    <form method="post" action="mg/mg_controller.php" id="myDIV" class="">
+
+  <input type="text" class="" id="taskName" name="taskName" placeholder="Task Name" style="width:20%;">
+
+  <input type="date"  class="" id="dueDate" name="dueDate" placeholder="Task Date" style="width:15%;">
+  <input type="time" class="" id="dueTime" name="dueTime"  placeholder="Task Time" style="width:15%;"/>
+
+<select class="" name="task_type" style="width:15%;">
+
+    <option value="daily">Daily Routines</option>
+    <option value="monthly">Month</option>
+    <option value="weekly">Weekly</option>
+    <option value="yearly">Yearly</option>
+    <option value="quarterly">Quarterly</option>
+ </select>
+ <select class="" name="value" style="width:15%;">
+    <option value="diamond">Diamond</option>
+    <option value="gold">Gold</option>
+    <option value="silver">Silver</option>
+    <option value="urgent">Urgent</option>
+    <option value="normal">Normal</option>
+    <option value="emergency">Emergency</option>
+  </select>
+
+  <br />
+
+  <textarea id="taskDetails" name="taskDetails" class="form-control" placeholder="Task Description" rows="10" cols="10"></textarea>
+
+  <input type="hidden" class="" id="task_status" name="task_status"  value="no">
+
+ <button type="submit" class="btn btn-primary" class="addBtn" name="addTask">Add Task</button>
+</form>
+
+
+
+
+
+
+
+
 
     </div>
-</body>
+  </header>
 
-</html>
+
+
+  <div class="w3-panel">
+    <div class="w3-row-padding" style="margin:0 -16px">
+
+    <div class="w3-third">
+      <h5><b> Daily Tasks</b> | <?php echo date("d"); ?></h5>
+      <table class="w3-table w3-striped w3-white">
+
+       <?php
+       $time=date("H:i");
+       $mg->daily();
+       ?>
+
+      </table>
+
+
+
+
+
+  <hr>
+  <h5><b> Weekly Tasks</b> | <?php echo date("d"); ?></h5>
+     <table class="w3-table w3-striped w3-white">
+       <?php  $mg->weekly();?>
+      </table>
+
+
+
+
+
+      </div>
+
+
+
+
+    <div class="w3-twothird">
+
+
+    <h5><b> Yearly Tasks</b> | <?php echo date("Y"); ?></h5>
+    <table class="w3-table w3-striped w3-white">
+       <?php  $mg->plans();?>
+      </table>
+
+
+      </div>
+    </div>
+
+
+
+
+    </div>
+  </div>
+  <hr>
+
+  <script>
+  function showAddTaskForm(){
+
+    document.getElementById("tasks").style.display = "block";
+  }
+
+  function hideAddTaskForm(){
+    document.getElementById("tasks").style.display = "none";
+
+  }
+
+  </script>
+
+
+<?php include("footer.php");   ?>
+
